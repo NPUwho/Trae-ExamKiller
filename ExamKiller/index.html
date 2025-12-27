@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExamKiller - 大学考试复习辅助平台</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <div class="logo">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <span class="brand-name">ExamKiller</span>
+                <span class="brand-tagline">大学考试复习辅助平台</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="nav-item active" data-section="home">
+                    <i class="fas fa-home"></i>
+                    <span>首页</span>
+                </a>
+                <a href="#" class="nav-item" data-section="upload">
+                    <i class="fas fa-upload"></i>
+                    <span>试卷上传</span>
+                </a>
+                <a href="#" class="nav-item" data-section="generate">
+                    <i class="fas fa-magic"></i>
+                    <span>AI出题</span>
+                </a>
+                <a href="#" class="nav-item" data-section="knowledge">
+                    <i class="fas fa-book"></i>
+                    <span>知识库</span>
+                </a>
+                <a href="#" class="nav-item" data-section="summary">
+                    <i class="fas fa-brain"></i>
+                    <span>知识摘要</span>
+                </a>
+                <a href="#" class="nav-item" data-section="practice">
+                    <i class="fas fa-pencil-alt"></i>
+                    <span>练习与批改</span>
+                </a>
+                <a href="#" class="nav-item" data-section="wrong-questions">
+                    <i class="fas fa-book-open"></i>
+                    <span>错题本</span>
+                </a>
+                <a href="#" class="nav-item" data-section="export">
+                    <i class="fas fa-file-export"></i>
+                    <span>文档导出</span>
+                </a>
+            </div>
+            <div class="nav-user">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-avatar">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=student" alt="用户头像">
+                </div>
+            </div>
+        </nav>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 首页 -->
+            <section id="home" class="content-section active">
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1>智能复习，<span class="highlight">高效备考</span></h1>
+                        <p>基于人工智能技术，为大学生提供全方位的考试复习解决方案</p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary" onclick="navigateTo('upload')">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                立即上传试卷
+                            </button>
+                            <button class="btn btn-secondary" onclick="navigateTo('generate')">
+                                <i class="fas fa-magic"></i>
+                                AI智能出题
+                            </button>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">10,000+</span>
+                                <span class="stat-label">已分析试卷</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">500,000+</span>
+                                <span class="stat-label">生成题目</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">50,000+</span>
+                                <span class="stat-label">活跃用户</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="floating-cards">
+                            <div class="card-float card-1">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>PDF解析</span>
+                            </div>
+                            <div class="card-float card-2">
+                                <i class="fas fa-eye"></i>
+                                <span>OCR识别</span>
+                            </div>
+                            <div class="card-float card-3">
+                                <i class="fas fa-brain"></i>
+                                <span>AI生成</span>
+                            </div>
+                            <div class="card-float card-4">
+                                <i class="fas fa-file-export"></i>
+                                <span>文档导出</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 功能特性 -->
+                <div class="features-section">
+                    <h2 class="section-title">核心功能</h2>
+                    <div class="features-grid">
+                        <div class="feature-card" onclick="navigateTo('upload')">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-upload"></i>
+                            </div>
+                            <h3>试卷智能解析</h3>
+                            <p>支持PDF、Word、图片等多种格式，自动识别题目、答案、分值</p>
+                        </div>
+                        <div class="feature-card" onclick="navigateTo('generate')">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3>AI题目生成</h3>
+                            <p>基于知识图谱和Transformer模型，智能生成高质量模拟题</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-sitemap"></i>
+                            </div>
+                            <h3>知识图谱</h3>
+                            <p>自动构建学科知识网络，智能关联跨学科知识点</p>
+                        </div>
+                        <div class="feature-card" onclick="navigateTo('export')">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3>文档导出</h3>
+                            <p>支持Markdown、Word、PDF多格式导出，排版精美</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 最近活动 -->
+                <div class="activity-section">
+                    <h2 class="section-title">最近活动</h2>
+                    <div class="activity-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon success">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>《高等数学》期末试卷分析完成</h4>
+                                <p>识别题目 45 道，提取知识点 32 个</p>
+                                <span class="activity-time">2分钟前</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon info">
+                                <i class="fas fa-magic"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>AI生成模拟试题 20 套</h4>
+                                <p>基于《数据结构》核心知识点生成</p>
+                                <span class="activity-time">15分钟前</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon warning">
+                                <i class="fas fa-file-export"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>导出《操作系统》复习资料</h4>
+                                <p>生成PDF文档 1 份，包含重点归纳</p>
+                                <span class="activity-time">1小时前</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </section>
+
+            <!-- 试卷上传模块 -->
+            <section id="upload" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> 试卷上传与分析</h2>
+                    <p>支持多种格式试卷上传，AI自动解析提取内容</p>
+                </div>
+
+                <div class="upload-container">
+                    <div class="upload-zone" id="dropZone">
+                        <div class="upload-content">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h3>拖拽文件到此处，或点击选择文件</h3>
+                            <p>支持 PDF、Word(.docx)、图片(JPG/PNG) 格式</p>
+                            <div class="upload-formats">
+                                <span class="format-badge"><i class="fas fa-file-pdf"></i> PDF</span>
+                                <span class="format-badge"><i class="fas fa-file-word"></i> DOCX</span>
+                                <span class="format-badge"><i class="fas fa-image"></i> JPG</span>
+                                <span class="format-badge"><i class="fas fa-image"></i> PNG</span>
+                            </div>
+                            <input type="file" id="fileInput" multiple accept=".pdf,.docx,.doc,.jpg,.jpeg,.png" hidden>
+                            <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                                选择文件
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="upload-progress" id="uploadProgress" style="display: none;">
+                        <div class="progress-header">
+                            <span id="progressFileName">上传中...</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-steps">
+                            <div class="step active" data-step="1">
+                                <i class="fas fa-check"></i>
+                                <span>文件验证</span>
+                            </div>
+                            <div class="step active" data-step="2">
+                                <i class="fas fa-check"></i>
+                                <span>格式转换</span>
+                            </div>
+                            <div class="step active" data-step="3">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>OCR识别</span>
+                            </div>
+                            <div class="step" data-step="4">
+                                <i class="fas fa-circle"></i>
+                                <span>版式分析</span>
+                            </div>
+                            <div class="step" data-step="5">
+                                <i class="fas fa-circle"></i>
+                                <span>结构化存储</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="classification-form">
+                    <h3><i class="fas fa-tags"></i> 试卷分类</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>学科门类</label>
+                            <select id="subjectSelect">
+                                <option value="">请选择学科</option>
+                                <option value="math">理学</option>
+                                <option value="engineering">工学</option>
+                                <option value="medicine">医学</option>
+                                <option value="economics">经济学</option>
+                                <option value="management">管理学</option>
+                                <option value="literature">文学</option>
+                                <option value="law">法学</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>课程名称</label>
+                            <input type="text" id="courseInput" placeholder="如：高等数学">
+                        </div>
+                        <div class="form-group">
+                            <label>章节范围</label>
+                            <input type="text" id="chapterInput" placeholder="如：第1-5章">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>考试时间</label>
+                            <input type="date" id="examDate">
+                        </div>
+                        <div class="form-group">
+                            <label>难度系数</label>
+                            <div class="difficulty-slider">
+                                <input type="range" id="difficultySlider" min="1" max="5" value="3">
+                                <span id="difficultyLabel">中等</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uploaded-papers">
+                    <h3><i class="fas fa-history"></i> 已上传试卷</h3>
+                    <div class="papers-list" id="papersList">
+                        <div class="paper-item">
+                            <div class="paper-icon pdf">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="paper-info">
+                                <h4>高等数学2024期末试卷A卷</h4>
+                                <p>理学类 · 高等数学 · 第1-8章</p>
+                                <div class="paper-meta">
+                                    <span><i class="fas fa-check-circle"></i> 已分析</span>
+                                    <span><i class="fas fa-clock"></i> 2024-12-20</span>
+                                    <span><i class="fas fa-list"></i> 45题</span>
+                                </div>
+                            </div>
+                            <div class="paper-actions">
+                                <button class="btn-icon" title="查看详情"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon" title="重新分析"><i class="fas fa-redo"></i></button>
+                                <button class="btn-icon danger" title="删除"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="paper-item">
+                            <div class="paper-icon docx">
+                                <i class="fas fa-file-word"></i>
+                            </div>
+                            <div class="paper-info">
+                                <h4>数据结构期中测试卷</h4>
+                                <p>工学类 · 数据结构 · 第3-6章</p>
+                                <div class="paper-meta">
+                                    <span><i class="fas fa-check-circle"></i> 已分析</span>
+                                    <span><i class="fas fa-clock"></i> 2024-12-18</span>
+                                    <span><i class="fas fa-list"></i> 38题</span>
+                                </div>
+                            </div>
+                            <div class="paper-actions">
+                                <button class="btn-icon" title="查看详情"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon" title="重新分析"><i class="fas fa-redo"></i></button>
+                                <button class="btn-icon danger" title="删除"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 考后记录分享功能 -->
+                    <div class="exam-memory-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-clipboard-list"></i> 考后记录分享</h2>
+                            <p>记录考试记忆，分享考试经验，AI智能整理总结</p>
+                        </div>
+
+                        <!-- 考试记忆记录表单 -->
+                        <div class="memory-form-container">
+                            <h3><i class="fas fa-pen-to-square"></i> 记录考试记忆</h3>
+                            <form id="examMemoryForm" class="memory-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="school">学校</label>
+                                        <input type="text" id="school" placeholder="请输入学校名称" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="examYear">年份</label>
+                                        <input type="number" id="examYear" min="2020" max="2030" value="2024" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="subject">科目</label>
+                                        <select id="subject" required>
+                                            <option value="">请选择科目</option>
+                                            <option value="math">数学</option>
+                                            <option value="physics">物理</option>
+                                            <option value="chemistry">化学</option>
+                                            <option value="biology">生物</option>
+                                            <option value="english">英语</option>
+                                            <option value="chinese">语文</option>
+                                            <option value="history">历史</option>
+                                            <option value="geography">地理</option>
+                                            <option value="politics">政治</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="examType">考试类型</label>
+                                        <select id="examType" required>
+                                            <option value="">请选择考试类型</option>
+                                            <option value="midterm">期中考试</option>
+                                            <option value="final">期末考试</option>
+                                            <option value="mock">模拟考试</option>
+                                            <option value="entrance">入学考试</option>
+                                            <option value="other">其他</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="memoryContent">考试记忆内容</label>
+                                    <textarea id="memoryContent" rows="5" placeholder="请记录考试中的题目、考点、难度等信息...
+
+例如：
+1. 有一道关于函数极限的证明题，使用了ε-δ定义
+2. 选择题考了复合函数的极限运算法则
+3. 大题涉及到两个重要极限的应用" required></textarea>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="reset" class="btn btn-secondary">
+                                        <i class="fas fa-trash"></i> 重置
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-paper-plane"></i> 提交记录
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 搜索组件 -->
+                        <div class="memory-search-container">
+                            <div class="search-header">
+                                <h3><i class="fas fa-search"></i> 搜索历史考试记忆</h3>
+                            </div>
+                            <div class="search-form">
+                                <div class="search-row">
+                                    <div class="search-group">
+                                        <label for="searchYear">年份</label>
+                                        <input type="number" id="searchYear" min="2020" max="2030" placeholder="2024">
+                                    </div>
+                                    <div class="search-group">
+                                        <label for="searchSubject">科目</label>
+                                        <select id="searchSubject">
+                                            <option value="">全部科目</option>
+                                            <option value="math">数学</option>
+                                            <option value="physics">物理</option>
+                                            <option value="chemistry">化学</option>
+                                            <option value="biology">生物</option>
+                                            <option value="english">英语</option>
+                                            <option value="chinese">语文</option>
+                                            <option value="history">历史</option>
+                                            <option value="geography">地理</option>
+                                            <option value="politics">政治</option>
+                                        </select>
+                                    </div>
+                                    <div class="search-group">
+                                        <label for="searchExamType">考试类型</label>
+                                        <select id="searchExamType">
+                                            <option value="">全部类型</option>
+                                            <option value="midterm">期中考试</option>
+                                            <option value="final">期末考试</option>
+                                            <option value="mock">模拟考试</option>
+                                            <option value="entrance">入学考试</option>
+                                            <option value="other">其他</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="search-actions">
+                                    <button type="button" class="btn btn-secondary" onclick="clearSearch()">
+                                        <i class="fas fa-eraser"></i> 清空
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="searchMemory()">
+                                        <i class="fas fa-search"></i> 搜索
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 历史考试记忆版本列表 -->
+                        <div class="memory-list-container">
+                            <div class="list-header">
+                                <h3><i class="fas fa-book-open"></i> 历史考试记忆版本</h3>
+                            </div>
+                            <div class="memory-list" id="memoryList">
+                                <!-- 示例数据 -->
+                                <div class="memory-item">
+                                    <div class="item-header">
+                                        <h4>2024年数学期中考试记忆版</h4>
+                                        <div class="exam-info">
+                                            <span class="exam-type">期中考试</span>
+                                            <span class="exam-date">2024-04-15</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="key-points">
+                                            <h5>核心考点</h5>
+                                            <ul>
+                                                <li>函数极限的定义与性质</li>
+                                                <li>极限的运算法则</li>
+                                                <li>两个重要极限</li>
+                                                <li>无穷小量与无穷大量</li>
+                                            </ul>
+                                        </div>
+                                        <div class="classic-questions">
+                                            <h5>经典题目</h5>
+                                            <ul>
+                                                <li>ε-δ定义证明函数极限存在性</li>
+                                                <li>复合函数极限的计算</li>
+                                                <li>利用重要极限求极限值</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="item-footer">
+                                        <span><i class="fas fa-users"></i> 12人参与记录</span>
+                                        <span><i class="fas fa-lightbulb"></i> AI智能整理</span>
+                                        <button class="btn btn-sm btn-secondary">
+                                            <i class="fas fa-download"></i> 查看详情
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="memory-item">
+                                    <div class="item-header">
+                                        <h4>2024年物理期末考试记忆版</h4>
+                                        <div class="exam-info">
+                                            <span class="exam-type">期末考试</span>
+                                            <span class="exam-date">2024-01-12</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-content">
+                                        <div class="key-points">
+                                            <h5>核心考点</h5>
+                                            <ul>
+                                                <li>牛顿运动定律</li>
+                                                <li>机械能守恒定律</li>
+                                                <li>动量守恒定律</li>
+                                                <li>圆周运动</li>
+                                            </ul>
+                                        </div>
+                                        <div class="classic-questions">
+                                            <h5>经典题目</h5>
+                                            <ul>
+                                                <li>连接体问题分析</li>
+                                                <li>抛体运动综合应用</li>
+                                                <li>碰撞问题求解</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="item-footer">
+                                        <span><i class="fas fa-users"></i> 8人参与记录</span>
+                                        <span><i class="fas fa-lightbulb"></i> AI智能整理</span>
+                                        <button class="btn btn-sm btn-secondary">
+                                            <i class="fas fa-download"></i> 查看详情
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI出题模块 -->
+            <section id="generate" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-magic"></i> AI智能出题系统</h2>
+                    <p>基于Transformer架构与知识图谱，智能生成高质量模拟试题</p>
+                </div>
+
+                <div class="generation-container">
+                    <div class="input-panel">
+                        <div class="input-tabs">
+                            <button class="tab-btn active" data-tab="text">
+                                <i class="fas fa-pen"></i> 文本输入
+                            </button>
+                            <button class="tab-btn" data-tab="file">
+                                <i class="fas fa-file-alt"></i> 文件导入
+                            </button>
+                            <button class="tab-btn" data-tab="voice">
+                                <i class="fas fa-microphone"></i> 语音输入
+                            </button>
+                        </div>
+
+                        <div class="tab-content active" id="textTab">
+                            <div class="input-area">
+                                <textarea id="reviewText" placeholder="在此粘贴您的复习要点、笔记内容或知识点描述...
+
+例如：
+1. 函数极限的定义：设函数f(x)在点x0的某一去心邻域内有定义...
+2. 极限的运算法则：和差积商的极限等于极限的和差积商...
+3. 两个重要极限：lim(x→0)sinx/x=1，lim(x→∞)(1+1/x)^x=e"></textarea>
+                                <div class="input-actions">
+                                    <button class="btn btn-secondary" onclick="clearText()">
+                                        <i class="fas fa-trash"></i> 清空
+                                    </button>
+                                    <button class="btn btn-primary" onclick="extractKnowledge()">
+                                        <i class="fas fa-magic"></i> 提取知识点
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="fileTab">
+                            <div class="file-import-area">
+                                <i class="fas fa-file-upload"></i>
+                                <p>支持 .txt、.docx 格式文件</p>
+                                <input type="file" id="importFileInput" accept=".txt,.docx,.doc" hidden>
+                                <button class="btn btn-secondary" onclick="document.getElementById('importFileInput').click()">
+                                    选择文件
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="voiceTab">
+                            <div class="voice-input-area">
+                                <div class="voice-record-btn" id="recordBtn">
+                                    <i class="fas fa-microphone"></i>
+                                </div>
+                                <p id="recordStatus">点击开始录音</p>
+                                <div class="voice-wave" id="voiceWave" style="display: none;">
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-panel">
+                        <h3><i class="fas fa-sliders-h"></i> 出题设置</h3>
+                        
+                        <div class="setting-group">
+                            <label>题目数量</label>
+                            <div class="number-selector">
+                                <button onclick="adjustNumber('questionCount', -5)">-</button>
+                                <input type="number" id="questionCount" value="20" min="5" max="100">
+                                <button onclick="adjustNumber('questionCount', 5)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>难度分布</label>
+                            <div class="difficulty-settings">
+                                <div class="difficulty-item">
+                                    <span class="diff-label easy">简单</span>
+                                    <input type="range" id="easyRatio" min="0" max="100" value="30">
+                                    <span id="easyPercent">30%</span>
+                                </div>
+                                <div class="difficulty-item">
+                                    <span class="diff-label medium">中等</span>
+                                    <input type="range" id="mediumRatio" min="0" max="100" value="50">
+                                    <span id="mediumPercent">50%</span>
+                                </div>
+                                <div class="difficulty-item">
+                                    <span class="diff-label hard">困难</span>
+                                    <input type="range" id="hardRatio" min="0" max="100" value="20">
+                                    <span id="hardPercent">20%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>题型设置</label>
+                            <div class="question-types">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" checked> 选择题
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" checked> 填空题
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox"> 判断题
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox"> 简答题
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox"> 计算题
+                                </label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-large" onclick="generateQuestions()">
+                            <i class="fas fa-magic"></i>
+                            开始生成
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 知识点提取结果 -->
+                <div class="extraction-result" id="extractionResult" style="display: none;">
+                    <div class="result-header">
+                        <h3><i class="fas fa-lightbulb"></i> 提取的知识点</h3>
+                        <div class="result-actions">
+                            <button class="btn btn-secondary" onclick="regenerateExtraction()">
+                                <i class="fas fa-redo"></i> 重新提取
+                            </button>
+                            <button class="btn btn-primary" onclick="applyToGeneration()">
+                                <i class="fas fa-check"></i> 应用到出题
+                            </button>
+                        </div>
+                    </div>
+                    <div class="knowledge-extracted" id="knowledgeExtracted">
+                        <!-- 动态填充 -->
+                    </div>
+                </div>
+
+                <!-- 生成结果 -->
+                <div class="generation-result" id="generationResult" style="display: none;">
+                    <div class="result-header">
+                        <h3><i class="fas fa-clipboard-check"></i> 生成结果</h3>
+                        <div class="result-stats">
+                            <span><i class="fas fa-list"></i> 共 <strong id="totalQuestions">0</strong> 题</span>
+                            <span><i class="fas fa-clock"></i> 预计用时 <strong id="estimatedTime">0</strong> 分钟</span>
+                        </div>
+                        <div class="result-actions">
+                            <button class="btn btn-secondary" onclick="exportQuestions('word')">
+                                <i class="fas fa-file-word"></i> 导出Word
+                            </button>
+                            <button class="btn btn-secondary" onclick="exportQuestions('pdf')">
+                                <i class="fas fa-file-pdf"></i> 导出PDF
+                            </button>
+                            <button class="btn btn-primary" onclick="startNewGeneration()">
+                                <i class="fas fa-plus"></i> 重新生成
+                            </button>
+                        </div>
+                    </div>
+                    <div class="questions-preview" id="questionsPreview">
+                        <!-- 动态填充 -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 知识库模块 -->
+            <section id="knowledge" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-book"></i> 知识库管理</h2>
+                    <p>查看和管理提取的知识点，构建个性化知识网络</p>
+                </div>
+
+                <div class="knowledge-dashboard">
+                    <div class="knowledge-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon core">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">核心知识点</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon important">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">35</span>
+                                <span class="stat-label">重要知识点</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon normal">
+                                <i class="fas fa-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">68</span>
+                                <span class="stat-label">一般知识点</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon cross">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value">15</span>
+                                <span class="stat-label">跨学科关联</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="knowledge-graph">
+                        <div class="graph-header">
+                            <h3><i class="fas fa-project-diagram"></i> 知识图谱可视化</h3>
+                            <div class="graph-controls">
+                                <button class="btn btn-secondary btn-sm" onclick="zoomGraph('in')">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                                <button class="btn btn-secondary btn-sm" onclick="zoomGraph('out')">
+                                    <i class="fas fa-search-minus"></i>
+                                </button>
+                                <button class="btn btn-secondary btn-sm" onclick="resetGraph()">
+                                    <i class="fas fa-compress-arrows-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="graph-container" id="knowledgeGraph">
+                            <!-- SVG知识图谱 -->
+                            <svg viewBox="0 0 800 500" class="knowledge-svg">
+                                <defs>
+                                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                        <polygon points="0 0, 10 3.5, 0 7" fill="#667eea" />
+                                    </marker>
+                                </defs>
+                                <g class="links">
+                                    <line x1="400" y1="100" x2="250" y2="200" class="link" />
+                                    <line x1="400" y1="100" x2="550" y2="200" class="link" />
+                                    <line x1="250" y1="200" x2="150" y2="320" class="link" />
+                                    <line x1="250" y1="200" x2="350" y2="320" class="link" />
+                                    <line x1="550" y1="200" x2="450" y2="320" class="link" />
+                                    <line x1="550" y1="200" x2="650" y2="320" class="link" />
+                                </g>
+                                <g class="nodes">
+                                    <circle cx="400" cy="100" r="40" class="node core" />
+                                    <text x="400" y="105" class="node-label">函数极限</text>
+                                    
+                                    <circle cx="250" cy="200" r="35" class="node important" />
+                                    <text x="250" y="205" class="node-label">极限定义</text>
+                                    
+                                    <circle cx="550" cy="200" r="35" class="node important" />
+                                    <text x="550" y="205" class="node-label">运算法则</text>
+                                    
+                                    <circle cx="150" cy="320" r="30" class="node normal" />
+                                    <text x="150" y="325" class="node-label">邻域概念</text>
+                                    
+                                    <circle cx="350" cy="320" r="30" class="node normal" />
+                                    <text x="350" y="325" class="node-label">去心邻域</text>
+                                    
+                                    <circle cx="450" cy="320" r="30" class="node normal" />
+                                    <text x="450" y="325" class="node-label">四则运算</text>
+                                    
+                                    <circle cx="650" cy="320" r="30" class="node normal" />
+                                    <text x="650" y="325" class="node-label">复合函数</text>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="knowledge-list">
+                        <div class="list-header">
+                            <h3><i class="fas fa-list"></i> 知识点列表</h3>
+                            <div class="list-filter">
+                                <select id="knowledgeFilter">
+                                    <option value="all">全部</option>
+                                    <option value="core">核心</option>
+                                    <option value="important">重要</option>
+                                    <option value="normal">一般</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="knowledge-items" id="knowledgeItems">
+                            <div class="knowledge-item" data-level="core">
+                                <div class="item-header">
+                                    <span class="level-badge core">核心</span>
+                                    <h4>函数极限的定义与性质</h4>
+                                </div>
+                                <p>理解函数极限的ε-δ定义，掌握极限的基本性质...</p>
+                                <div class="item-footer">
+                                    <span><i class="fas fa-link"></i> 关联 8 个知识点</span>
+                                    <span><i class="fas fa-file-alt"></i> 12 道相关题目</span>
+                                </div>
+                            </div>
+                            <div class="knowledge-item" data-level="important">
+                                <div class="item-header">
+                                    <span class="level-badge important">重要</span>
+                                    <h4>极限的运算法则</h4>
+                                </div>
+                                <p>掌握和差积商的极限运算法则，能正确运用...</p>
+                                <div class="item-footer">
+                                    <span><i class="fas fa-link"></i> 关联 5 个知识点</span>
+                                    <span><i class="fas fa-file-alt"></i> 8 道相关题目</span>
+                                </div>
+                            </div>
+                            <div class="knowledge-item" data-level="normal">
+                                <div class="item-header">
+                                    <span class="level-badge normal">一般</span>
+                                    <h4>邻域与去心邻域</h4>
+                                </div>
+                                <p>理解邻域的概念，掌握去心邻域的定义...</p>
+                                <div class="item-footer">
+                                    <span><i class="fas fa-link"></i> 关联 3 个知识点</span>
+                                    <span><i class="fas fa-file-alt"></i> 5 道相关题目</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 文档导出模块 -->
+            <section id="export" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-file-export"></i> 文档导出</h2>
+                    <p>生成专业的复习资料文档，支持多种格式导出</p>
+                </div>
+
+                <div class="export-container">
+                    <div class="template-selection">
+                        <h3><i class="fas fa-palette"></i> 选择模板</h3>
+                        <div class="templates-grid">
+                            <div class="template-card active" data-template="academic">
+                                <div class="template-preview academic-preview">
+                                    <div class="preview-header"></div>
+                                    <div class="preview-content">
+                                        <div class="preview-line title"></div>
+                                        <div class="preview-line"></div>
+                                        <div class="preview-line short"></div>
+                                    </div>
+                                </div>
+                                <span class="template-name">学术风格</span>
+                                <i class="fas fa-check-circle selected-icon"></i>
+                            </div>
+                            <div class="template-card" data-template="modern">
+                                <div class="template-preview modern-preview">
+                                    <div class="preview-header"></div>
+                                    <div class="preview-content">
+                                        <div class="preview-line title"></div>
+                                        <div class="preview-line"></div>
+                                        <div class="preview-line short"></div>
+                                    </div>
+                                </div>
+                                <span class="template-name">现代简约</span>
+                                <i class="fas fa-check-circle selected-icon"></i>
+                            </div>
+                            <div class="template-card" data-template="compact">
+                                <div class="template-preview compact-preview">
+                                    <div class="preview-header"></div>
+                                    <div class="preview-content">
+                                        <div class="preview-line title"></div>
+                                        <div class="preview-line"></div>
+                                        <div class="preview-line short"></div>
+                                    </div>
+                                </div>
+                                <span class="template-name">紧凑排版</span>
+                                <i class="fas fa-check-circle selected-icon"></i>
+                            </div>
+                            <div class="template-card" data-template="colorful">
+                                <div class="template-preview colorful-preview">
+                                    <div class="preview-header"></div>
+                                    <div class="preview-content">
+                                        <div class="preview-line title"></div>
+                                        <div class="preview-line"></div>
+                                        <div class="preview-line short"></div>
+                                    </div>
+                                </div>
+                                <span class="template-name">彩色高亮</span>
+                                <i class="fas fa-check-circle selected-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="export-settings">
+                        <h3><i class="fas fa-cog"></i> 导出设置</h3>
+                        
+                        <div class="setting-row">
+                            <label>文档标题</label>
+                            <input type="text" id="docTitle" value="高等数学重点知识归纳" placeholder="输入文档标题">
+                        </div>
+
+                        <div class="setting-row">
+                            <label>包含内容</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" checked> 知识点概述
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" checked> 典型例题
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" checked> 解题思路
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox"> 练习题目
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="setting-row">
+                            <label>页面设置</label>
+                            <div class="page-settings">
+                                <div class="page-option">
+                                    <span>页眉</span>
+                                    <input type="text" id="headerText" placeholder="如：高等数学复习资料">
+                                </div>
+                                <div class="page-option">
+                                    <span>页脚</span>
+                                    <input type="text" id="footerText" placeholder="如：第X页 共Y页">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setting-row">
+                            <label>附加选项</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" checked> 添加水印
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox"> 添加页码
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" checked> 知识点高亮
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="export-actions">
+                        <h3><i class="fas fa-download"></i> 导出文档</h3>
+                        <div class="export-buttons">
+                            <button class="export-btn" onclick="exportDocument('markdown')">
+                                <i class="fab fa-markdown"></i>
+                                <span>Markdown</span>
+                                <small>GFM规范兼容</small>
+                            </button>
+                            <button class="export-btn" onclick="exportDocument('word')">
+                                <i class="fas fa-file-word"></i>
+                                <span>Word</span>
+                                <small>Office 2016+</small>
+                            </button>
+                            <button class="export-btn" onclick="exportDocument('pdf')">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>PDF</span>
+                                <small>搜索+书签</small>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 文档预览 -->
+                <div class="document-preview" id="documentPreview" style="display: none;">
+                    <div class="preview-header">
+                        <h3><i class="fas fa-eye"></i> 文档预览</h3>
+                        <button class="btn btn-secondary" onclick="closePreview()">
+                            <i class="fas fa-times"></i> 关闭
+                        </button>
+                    </div>
+                    <div class="preview-content" id="previewContent">
+                        <!-- 动态填充 -->
+                    </div>
+                </div>
+            <!-- 知识摘要模块 -->
+            <section id="summary" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-brain"></i> 知识摘要生成</h2>
+                    <p>基于提纲、试卷、PPT生成知识图谱和表格形式的知识摘要</p>
+                </div>
+
+                <div class="summary-container">
+                    <div class="input-panel">
+                        <div class="input-tabs">
+                            <button class="tab-btn active" data-tab="text">
+                                <i class="fas fa-pen"></i> 文本输入
+                            </button>
+                            <button class="tab-btn" data-tab="file">
+                                <i class="fas fa-file-alt"></i> 文件导入
+                            </button>
+                        </div>
+
+                        <div class="tab-content active" id="summaryTextTab">
+                            <div class="input-area">
+                                <textarea id="summaryText" placeholder="在此粘贴您的复习提纲、课程笔记或知识点描述...
+
+例如：
+1. 函数极限的定义：设函数f(x)在点x0的某一去心邻域内有定义...
+2. 极限的运算法则：和差积商的极限等于极限的和差积商...
+3. 两个重要极限：lim(x→0)sinx/x=1，lim(x→∞)(1+1/x)^x=e"></textarea>
+                                <div class="input-actions">
+                                    <button class="btn btn-secondary" onclick="clearSummaryText()">
+                                        <i class="fas fa-trash"></i> 清空
+                                    </button>
+                                    <button class="btn btn-primary" onclick="generateSummary()">
+                                        <i class="fas fa-magic"></i> 生成摘要
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="summaryFileTab">
+                            <div class="file-import-area">
+                                <i class="fas fa-file-upload"></i>
+                                <p>支持 PDF、Word(.docx)、PPT(.pptx)、图片格式</p>
+                                <input type="file" id="summaryFileInput" multiple accept=".pdf,.docx,.pptx,.jpg,.jpeg,.png" hidden>
+                                <button class="btn btn-secondary" onclick="document.getElementById('summaryFileInput').click()">
+                                    选择文件
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 生成结果 -->
+                    <div class="summary-result" id="summaryResult" style="display: none;">
+                        <div class="result-header">
+                            <h3><i class="fas fa-lightbulb"></i> 知识摘要生成结果</h3>
+                            <div class="result-actions">
+                                <button class="btn btn-primary" onclick="regenerateSummary()">
+                                    <i class="fas fa-redo"></i> 重新生成
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- 知识图谱展示 -->
+                        <div class="knowledge-graph-section">
+                            <h4><i class="fas fa-project-diagram"></i> 知识图谱</h4>
+                            <div class="graph-container" id="summaryKnowledgeGraph">
+                                <!-- SVG知识图谱将动态生成 -->
+                                <svg viewBox="0 0 800 500" class="knowledge-svg">
+                                    <defs>
+                                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                            <polygon points="0 0, 10 3.5, 0 7" fill="#667eea" />
+                                        </marker>
+                                    </defs>
+                                    <g class="links">
+                                        <line x1="400" y1="100" x2="250" y2="200" class="link" />
+                                        <line x1="400" y1="100" x2="550" y2="200" class="link" />
+                                        <line x1="250" y1="200" x2="150" y2="320" class="link" />
+                                        <line x1="250" y1="200" x2="350" y2="320" class="link" />
+                                        <line x1="550" y1="200" x2="450" y2="320" class="link" />
+                                        <line x1="550" y1="200" x2="650" y2="320" class="link" />
+                                    </g>
+                                    <g class="nodes">
+                                        <circle cx="400" cy="100" r="40" class="node core" />
+                                        <text x="400" y="105" class="node-label">核心知识点</text>
+                                        
+                                        <circle cx="250" cy="200" r="35" class="node important" />
+                                        <text x="250" y="205" class="node-label">重要知识点1</text>
+                                        
+                                        <circle cx="550" cy="200" r="35" class="node important" />
+                                        <text x="550" y="205" class="node-label">重要知识点2</text>
+                                        
+                                        <circle cx="150" cy="320" r="30" class="node normal" />
+                                        <text x="150" y="325" class="node-label">知识点1</text>
+                                        
+                                        <circle cx="350" cy="320" r="30" class="node normal" />
+                                        <text x="350" y="325" class="node-label">知识点2</text>
+                                        
+                                        <circle cx="450" cy="320" r="30" class="node normal" />
+                                        <text x="450" y="325" class="node-label">知识点3</text>
+                                        
+                                        <circle cx="650" cy="320" r="30" class="node normal" />
+                                        <text x="650" y="325" class="node-label">知识点4</text>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- 知识表格展示 -->
+                        <div class="knowledge-table-section">
+                            <h4><i class="fas fa-table"></i> 知识表格</h4>
+                            <div class="table-container">
+                                <table class="knowledge-table">
+                                    <thead>
+                                        <tr>
+                                            <th>知识点名称</th>
+                                            <th>重要程度</th>
+                                            <th>简短描述</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="knowledgeTableBody">
+                                        <!-- 动态填充表格内容 -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 练习与批改模块 -->
+            <section id="practice" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-pencil-alt"></i> 练习与批改</h2>
+                    <p>在线答题，AI智能批改，实时获得详细的答题反馈</p>
+                </div>
+
+                <div class="practice-container">
+                    <!-- 练习选择面板 -->
+                    <div class="practice-selector">
+                        <div class="selector-tabs">
+                            <button class="tab-btn active" data-tab="custom-practice">
+                                <i class="fas fa-edit"></i> 自定义练习
+                            </button>
+                            <button class="tab-btn" data-tab="knowledge-practice">
+                                <i class="fas fa-brain"></i> 知识点练习
+                            </button>
+                            <button class="tab-btn" data-tab="wrong-practice">
+                                <i class="fas fa-exclamation-triangle"></i> 错题重练
+                            </button>
+                        </div>
+
+                        <!-- 自定义练习 -->
+                        <div class="tab-content active" id="customPracticeTab">
+                            <div class="practice-setup">
+                                <div class="setup-section">
+                                    <h3><i class="fas fa-cog"></i> 练习设置</h3>
+                                    <div class="setup-grid">
+                                        <div class="setup-item">
+                                            <label>题目数量</label>
+                                            <div class="number-selector">
+                                                <button onclick="adjustPracticeNumber('practiceCount', -5)">-</button>
+                                                <input type="number" id="practiceCount" value="20" min="5" max="50">
+                                                <button onclick="adjustPracticeNumber('practiceCount', 5)">+</button>
+                                            </div>
+                                        </div>
+                                        <div class="setup-item">
+                                            <label>题型选择</label>
+                                            <div class="question-types">
+                                                <label class="checkbox-item">
+                                                    <input type="checkbox" checked> 选择题
+                                                </label>
+                                                <label class="checkbox-item">
+                                                    <input type="checkbox" checked> 填空题
+                                                </label>
+                                                <label class="checkbox-item">
+                                                    <input type="checkbox"> 判断题
+                                                </label>
+                                                <label class="checkbox-item">
+                                                    <input type="checkbox"> 简答题
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="setup-item">
+                                            <label>难度范围</label>
+                                            <div class="difficulty-range">
+                                                <input type="range" id="minDifficulty" min="1" max="5" value="1">
+                                                <span>至</span>
+                                                <input type="range" id="maxDifficulty" min="1" max="5" value="5">
+                                                <div class="difficulty-labels">
+                                                    <span>简单</span>
+                                                    <span>中等</span>
+                                                    <span>困难</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary btn-large" onclick="startCustomPractice()">
+                                        <i class="fas fa-play"></i> 开始练习
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 知识点练习 -->
+                        <div class="tab-content" id="knowledgePracticeTab">
+                            <div class="knowledge-practice-setup">
+                                <div class="knowledge-selector">
+                                    <h3><i class="fas fa-list"></i> 选择知识点</h3>
+                                    <div class="knowledge-filters">
+                                        <select id="subjectFilter">
+                                            <option value="">选择学科</option>
+                                            <option value="math">高等数学</option>
+                                            <option value="physics">大学物理</option>
+                                            <option value="chemistry">大学化学</option>
+                                            <option value="programming">程序设计</option>
+                                        </select>
+                                        <input type="text" id="knowledgeSearch" placeholder="搜索知识点...">
+                                    </div>
+                                    <div class="knowledge-list" id="knowledgeList">
+                                        <div class="knowledge-option">
+                                            <label class="knowledge-card">
+                                                <input type="checkbox" value="函数极限">
+                                                <div class="card-content">
+                                                    <h4>函数极限</h4>
+                                                    <p>掌握极限的定义、性质和计算方法</p>
+                                                    <span class="difficulty-badge medium">中等</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="knowledge-option">
+                                            <label class="knowledge-card">
+                                                <input type="checkbox" value="导数概念">
+                                                <div class="card-content">
+                                                    <h4>导数概念</h4>
+                                                    <p>理解导数的几何意义和物理意义</p>
+                                                    <span class="difficulty-badge easy">简单</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="knowledge-option">
+                                            <label class="knowledge-card">
+                                                <input type="checkbox" value="积分计算">
+                                                <div class="card-content">
+                                                    <h4>积分计算</h4>
+                                                    <p>掌握不定积分和定积分的计算方法</p>
+                                                    <span class="difficulty-badge hard">困难</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" onclick="startKnowledgePractice()">
+                                    <i class="fas fa-brain"></i> 开始知识点练习
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 错题重练 -->
+                        <div class="tab-content" id="wrongPracticeTab">
+                            <div class="wrong-practice-setup">
+                                <div class="wrong-questions-summary">
+                                    <h3><i class="fas fa-exclamation-triangle"></i> 错题概览</h3>
+                                    <div class="summary-cards">
+                                        <div class="summary-card">
+                                            <div class="card-icon error">
+                                                <i class="fas fa-times-circle"></i>
+                                            </div>
+                                            <div class="card-info">
+                                                <span class="card-number">25</span>
+                                                <span class="card-label">总错题数</span>
+                                            </div>
+                                        </div>
+                                        <div class="summary-card">
+                                            <div class="card-icon warning">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                            </div>
+                                            <div class="card-info">
+                                                <span class="card-number">8</span>
+                                                <span class="card-label">高频错题</span>
+                                            </div>
+                                        </div>
+                                        <div class="summary-card">
+                                            <div class="card-icon success">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <div class="card-info">
+                                                <span class="card-number">15</span>
+                                                <span class="card-label">已掌握</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wrong-questions-list">
+                                    <h4><i class="fas fa-list"></i> 错题分类</h4>
+                                    <div class="question-categories">
+                                        <div class="category-item" onclick="selectWrongCategory('all')">
+                                            <div class="category-info">
+                                                <h5>全部错题</h5>
+                                                <span>25道题目</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-primary">开始练习</button>
+                                        </div>
+                                        <div class="category-item" onclick="selectWrongCategory('frequent')">
+                                            <div class="category-info">
+                                                <h5>高频错题</h5>
+                                                <span>8道题目（错误≥3次）</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-warning">重点练习</button>
+                                        </div>
+                                        <div class="category-item" onclick="selectWrongCategory('recent')">
+                                            <div class="category-info">
+                                                <h5>最近错题</h5>
+                                                <span>12道题目（本周）</span>
+                                            </div>
+                                            <button class="btn btn-sm btn-secondary">复习巩固</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 答题界面 -->
+                    <div class="practice-interface" id="practiceInterface" style="display: none;">
+                        <div class="practice-header">
+                            <div class="practice-progress">
+                                <span class="progress-text">第 <span id="currentQuestion">1</span> 题 / 共 <span id="totalPracticeQuestions">20</span> 题</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="practiceProgressFill"></div>
+                                </div>
+                            </div>
+                            <div class="practice-timer">
+                                <i class="fas fa-clock"></i>
+                                <span id="practiceTimer">00:00</span>
+                            </div>
+                        </div>
+
+                        <div class="question-container" id="questionContainer">
+                            <!-- 动态填充题目内容 -->
+                        </div>
+
+                        <div class="practice-footer">
+                            <button class="btn btn-secondary" id="prevQuestion" onclick="previousQuestion()">
+                                <i class="fas fa-chevron-left"></i> 上一题
+                            </button>
+                            <div class="question-actions">
+                                <button class="btn btn-outline" onclick="markQuestion()">
+                                    <i class="fas fa-bookmark"></i> 标记
+                                </button>
+                                <button class="btn btn-outline" onclick="clearAnswer()">
+                                    <i class="fas fa-eraser"></i> 清除
+                                </button>
+                            </div>
+                            <button class="btn btn-primary" id="nextQuestion" onclick="nextQuestion()">
+                                下一题 <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 批改结果界面 -->
+                    <div class="grading-result" id="gradingResult" style="display: none;">
+                        <div class="result-header">
+                            <h3><i class="fas fa-clipboard-check"></i> 练习完成</h3>
+                            <div class="result-summary">
+                                <div class="score-display">
+                                    <span class="score-number" id="finalScore">85</span>
+                                    <span class="score-label">得分</span>
+                                </div>
+                                <div class="accuracy-display">
+                                    <span class="accuracy-number" id="accuracy">85%</span>
+                                    <span class="accuracy-label">正确率</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-details">
+                            <div class="performance-analysis">
+                                <h4><i class="fas fa-chart-bar"></i> 表现分析</h4>
+                                <div class="analysis-grid">
+                                    <div class="analysis-item">
+                                        <span class="analysis-label">用时</span>
+                                        <span class="analysis-value" id="totalTime">25分钟</span>
+                                    </div>
+                                    <div class="analysis-item">
+                                        <span class="analysis-label">正确题数</span>
+                                        <span class="analysis-value" id="correctCount">17</span>
+                                    </div>
+                                    <div class="analysis-item">
+                                        <span class="analysis-label">错误题数</span>
+                                        <span class="analysis-value" id="wrongCount">3</span>
+                                    </div>
+                                    <div class="analysis-item">
+                                        <span class="analysis-label">标记题数</span>
+                                        <span class="analysis-value" id="markedCount">2</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wrong-questions-review">
+                                <h4><i class="fas fa-exclamation-triangle"></i> 错题分析</h4>
+                                <div class="wrong-questions-list" id="wrongQuestionsList">
+                                    <!-- 动态填充错题详情 -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-actions">
+                            <button class="btn btn-secondary" onclick="reviewAnswers()">
+                                <i class="fas fa-eye"></i> 查看解析
+                            </button>
+                            <button class="btn btn-primary" onclick="practiceAgain()">
+                                <i class="fas fa-redo"></i> 再次练习
+                            </button>
+                            <button class="btn btn-outline" onclick="exportPracticeResult()">
+                                <i class="fas fa-download"></i> 导出报告
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 错题本模块 -->
+            <section id="wrong-questions" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-book-open"></i> 错题本管理</h2>
+                    <p>智能收集错题，分类管理薄弱知识点，个性化复习</p>
+                </div>
+
+                <div class="wrong-questions-container">
+                    <!-- 统计面板 -->
+                    <div class="wrong-questions-stats">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon error">
+                                    <i class="fas fa-times-circle"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="totalWrongCount">156</span>
+                                    <span class="stat-label">总错题数</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="frequentWrongCount">23</span>
+                                    <span class="stat-label">高频错题</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon success">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="masteredCount">89</span>
+                                    <span class="stat-label">已掌握</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon practice">
+                                    <i class="fas fa-redo"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="practiceRate">87%</span>
+                                    <span class="stat-label">掌握率</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 操作面板 -->
+                    <div class="wrong-questions-controls">
+                        <div class="control-tabs">
+                            <button class="tab-btn active" data-tab="all-wrong">
+                                <i class="fas fa-list"></i> 全部错题
+                            </button>
+                            <button class="tab-btn" data-tab="category-wrong">
+                                <i class="fas fa-tags"></i> 分类管理
+                            </button>
+                            <button class="tab-btn" data-tab="analysis-wrong">
+                                <i class="fas fa-chart-line"></i> 错题分析
+                            </button>
+                        </div>
+
+                        <!-- 全部错题 -->
+                        <div class="tab-content active" id="allWrongTab">
+                            <div class="wrong-questions-filters">
+                                <div class="filter-group">
+                                    <select id="subjectFilter">
+                                        <option value="">全部学科</option>
+                                        <option value="math">高等数学</option>
+                                        <option value="physics">大学物理</option>
+                                        <option value="chemistry">大学化学</option>
+                                    </select>
+                                    <select id="difficultyFilter">
+                                        <option value="">全部难度</option>
+                                        <option value="easy">简单</option>
+                                        <option value="medium">中等</option>
+                                        <option value="hard">困难</option>
+                                    </select>
+                                    <select id="errorCountFilter">
+                                        <option value="">全部错误次数</option>
+                                        <option value="1">错误1次</option>
+                                        <option value="2">错误2次</option>
+                                        <option value="3">错误3次+</option>
+                                    </select>
+                                </div>
+                                <div class="filter-actions">
+                                    <button class="btn btn-outline" onclick="exportWrongQuestions()">
+                                        <i class="fas fa-download"></i> 导出
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="batchPractice()">
+                                        <i class="fas fa-play"></i> 批量练习
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="wrong-questions-list" id="wrongQuestionsList">
+                                <div class="wrong-question-item" data-difficulty="medium" data-error-count="3">
+                                    <div class="question-header">
+                                        <div class="question-meta">
+                                            <span class="subject-tag">高等数学</span>
+                                            <span class="difficulty-tag medium">中等</span>
+                                            <span class="error-count-tag">错误3次</span>
+                                        </div>
+                                        <div class="question-actions">
+                                            <button class="btn-icon" onclick="practiceQuestion()" title="练习">
+                                                <i class="fas fa-play"></i>
+                                            </button>
+                                            <button class="btn-icon" onclick="viewAnalysis()" title="查看解析">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn-icon" onclick="markAsMastered()" title="标记掌握">
+                                                <i class="fas fa-check"></i>
+                                            </button>
+                                            <button class="btn-icon danger" onclick="deleteQuestion()" title="删除">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="question-content">
+                                        <h4>题目：计算lim(x→0) (sinx)/x的值</h4>
+                                        <p class="student-answer">学生答案：1/2</p>
+                                        <p class="correct-answer">正确答案：1</p>
+                                        <p class="error-analysis">错误分析：对两个重要极限理解不深，混淆了sinx/x和x/sinx的极限值</p>
+                                    </div>
+                                    <div class="question-footer">
+                                        <span class="error-time">最后错误：2024-12-25</span>
+                                        <span class="knowledge-point">知识点：极限计算</span>
+                                    </div>
+                                </div>
+
+                                <div class="wrong-question-item" data-difficulty="hard" data-error-count="2">
+                                    <div class="question-header">
+                                        <div class="question-meta">
+                                            <span class="subject-tag">高等数学</span>
+                                            <span class="difficulty-tag hard">困难</span>
+                                            <span class="error-count-tag">错误2次</span>
+                                        </div>
+                                        <div class="question-actions">
+                                            <button class="btn-icon" onclick="practiceQuestion()" title="练习">
+                                                <i class="fas fa-play"></i>
+                                            </button>
+                                            <button class="btn-icon" onclick="viewAnalysis()" title="查看解析">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn-icon" onclick="markAsMastered()" title="标记掌握">
+                                                <i class="fas fa-check"></i>
+                                            </button>
+                                            <button class="btn-icon danger" onclick="deleteQuestion()" title="删除">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="question-content">
+                                        <h4>题目：求函数f(x)=x³-3x²+2的单调区间</h4>
+                                        <p class="student-answer">学生答案：(-∞,0)和(2,+∞)递增，(0,2)递减</p>
+                                        <p class="correct-answer">正确答案：(-∞,0)和(2,+∞)递减，(0,2)递增</p>
+                                        <p class="error-analysis">错误分析：对导数符号与函数单调性的关系理解错误</p>
+                                    </div>
+                                    <div class="question-footer">
+                                        <span class="error-time">最后错误：2024-12-24</span>
+                                        <span class="knowledge-point">知识点：函数单调性</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 分类管理 -->
+                        <div class="tab-content" id="categoryWrongTab">
+                            <div class="category-management">
+                                <div class="category-creation">
+                                    <h4><i class="fas fa-plus"></i> 创建新分类</h4>
+                                    <div class="category-form">
+                                        <input type="text" id="categoryName" placeholder="分类名称（如：极限计算专题）">
+                                        <input type="text" id="categoryDescription" placeholder="分类描述">
+                                        <button class="btn btn-primary" onclick="createCategory()">
+                                            <i class="fas fa-plus"></i> 创建分类
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="category-list" id="categoryList">
+                                    <div class="category-item">
+                                        <div class="category-header">
+                                            <h4>极限计算专题</h4>
+                                            <span class="question-count">15道题</span>
+                                        </div>
+                                        <p class="category-description">专门收集极限计算相关的错题</p>
+                                        <div class="category-stats">
+                                            <span class="mastery-rate">掌握率：60%</span>
+                                            <span class="recent-errors">本周新增：3道</span>
+                                        </div>
+                                        <div class="category-actions">
+                                            <button class="btn btn-sm btn-primary" onclick="practiceCategory()">
+                                                <i class="fas fa-play"></i> 练习
+                                            </button>
+                                            <button class="btn btn-sm btn-secondary" onclick="viewCategory()">
+                                                <i class="fas fa-eye"></i> 查看
+                                            </button>
+                                            <button class="btn btn-sm btn-outline" onclick="editCategory()">
+                                                <i class="fas fa-edit"></i> 编辑
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="category-item">
+                                        <div class="category-header">
+                                            <h4>导数应用错题</h4>
+                                            <span class="question-count">8道题</span>
+                                        </div>
+                                        <p class="category-description">导数在实际问题中的应用错题</p>
+                                        <div class="category-stats">
+                                            <span class="mastery-rate">掌握率：75%</span>
+                                            <span class="recent-errors">本周新增：1道</span>
+                                        </div>
+                                        <div class="category-actions">
+                                            <button class="btn btn-sm btn-primary" onclick="practiceCategory()">
+                                                <i class="fas fa-play"></i> 练习
+                                            </button>
+                                            <button class="btn btn-sm btn-secondary" onclick="viewCategory()">
+                                                <i class="fas fa-eye"></i> 查看
+                                            </button>
+                                            <button class="btn btn-sm btn-outline" onclick="editCategory()">
+                                                <i class="fas fa-edit"></i> 编辑
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 错题分析 -->
+                        <div class="tab-content" id="analysisWrongTab">
+                            <div class="wrong-questions-analysis">
+                                <div class="analysis-charts">
+                                    <div class="chart-container">
+                                        <h4><i class="fas fa-chart-pie"></i> 错题分布</h4>
+                                        <div class="pie-chart" id="wrongDistributionChart">
+                                            <div class="chart-legend">
+                                                <div class="legend-item">
+                                                    <div class="legend-color" style="background: #ff6b6b;"></div>
+                                                    <span>极限计算 (35%)</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <div class="legend-color" style="background: #4ecdc4;"></div>
+                                                    <span>导数应用 (28%)</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <div class="legend-color" style="background: #45b7d1;"></div>
+                                                    <span>积分计算 (22%)</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <div class="legend-color" style="background: #f9ca24;"></div>
+                                                    <span>其他 (15%)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="chart-container">
+                                        <h4><i class="fas fa-chart-line"></i> 错误趋势</h4>
+                                        <div class="line-chart" id="errorTrendChart">
+                                            <div class="chart-placeholder">
+                                                <canvas id="trendCanvas" width="400" height="200"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="analysis-insights">
+                                    <h4><i class="fas fa-lightbulb"></i> 智能分析</h4>
+                                    <div class="insights-list">
+                                        <div class="insight-item warning">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                            <div class="insight-content">
+                                                <h5>高频错误知识点</h5>
+                                                <p>"极限计算"相关题目错误率高达65%，建议重点练习</p>
+                                            </div>
+                                        </div>
+                                        <div class="insight-item info">
+                                            <i class="fas fa-info-circle"></i>
+                                            <div class="insight-content">
+                                                <h5>进步趋势</h5>
+                                                <p>本周错题数量比上周减少25%，继续保持</p>
+                                            </div>
+                                        </div>
+                                        <div class="insight-item success">
+                                            <i class="fas fa-check-circle"></i>
+                                            <div class="insight-content">
+                                                <h5>掌握情况</h5>
+                                                <p>已掌握89道错题，掌握率达到57%，表现优秀</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ExamKiller</h4>
+                    <p>大学考试复习辅助平台</p>
+                    <p>基于人工智能技术，助力高效备考</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <a href="#">使用帮助</a>
+                    <a href="#">常见问题</a>
+                    <a href="#">联系我们</a>
+                </div>
+                <div class="footer-section">
+                    <h4>技术支持</h4>
+                    <p>OCR文字识别</p>
+                    <p>Transformer模型</p>
+                    <p>知识图谱构建</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ExamKiller - 大学考试复习辅助平台. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 通知提示 -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- 加载动画 -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p id="loadingText">处理中...</p>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
